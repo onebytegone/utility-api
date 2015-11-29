@@ -27,6 +27,8 @@ array_walk($passiveEndpoints, array($router, 'addEndpoint'));
 array_walk($activeEndpoints, array($router, 'addEndpoint'));
 
 $url = strtok($_SERVER["REQUEST_URI"],'?');
+$url = ltrim($url, '/');
+
 echo $router->process($url, $_GET, $_POST, array(
    'ip' => $_SERVER['REMOTE_ADDR'],
    'agent' => $_SERVER['HTTP_USER_AGENT']
